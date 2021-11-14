@@ -2,6 +2,8 @@ package entity;
 
 import javax.persistence.*;
 
+import java.util.List;
+
 import lombok.*;
 
 @Getter
@@ -34,6 +36,9 @@ public class Book extends BasicEntity{
     @ManyToOne
     @JoinColumn(name = "publisher_id")
     private Publisher publisher;
+
+    @OneToMany(mappedBy = "book")
+    private List<AuthorBook> authorBookList;
 
     @Override
     public String toString() {

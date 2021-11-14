@@ -23,8 +23,15 @@ public class Main {
             System.out.println(bookDto);
         });
 
+        BookDto bookDto = bookService.findByTitle("Kaznodzieja");
+        System.out.println(bookDto);
 
-
+        System.out.println("**call bookService.findBookWithPagesNumberRange**");
+        List<BookDto> bookWithPagesNumberRange = bookService.findBookWithPagesNumberRange(
+                (short) 100, (short) 300);
+        bookWithPagesNumberRange.forEach(bookDto1 -> {
+            System.out.println(bookDto1);
+        });
 
         //System.out.println(books);
         /* EntityManagerFactory entityManagerFactory =

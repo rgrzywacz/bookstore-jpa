@@ -9,5 +9,6 @@ public class BookDto {
     private short pagesNumber;
     private String categoryName;
     private String publisherName;
+    private AuthorDto authorDto;
 
 }
