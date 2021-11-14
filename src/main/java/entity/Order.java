@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "orders")
-public class Order {
+public class Order extends BasicEntity{
     @Column
     private BigDecimal discount;
     @ManyToOne

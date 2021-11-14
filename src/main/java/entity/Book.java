@@ -35,4 +35,9 @@ public class Book extends BasicEntity{
     @JoinColumn(name = "publisher_id")
     private Publisher publisher;
 
+    @Override
+    public String toString() {
+        return "Book{" + "title='" + title + '\'' + ", pagesNumber=" + pagesNumber + ", isbn=" +
+               isbn + ", category=" + category + ", publisher=" + publisher + '}';
+    }
 }

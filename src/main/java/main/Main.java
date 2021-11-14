@@ -4,14 +4,30 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import java.util.List;
+
+import dao.BookDao;
+import dto.BookDto;
 import entity.Author;
 import entity.AuthorBook;
 import entity.Book;
 import entity.Category;
+import service.BookService;
 
 public class Main {
     public static void main(String[] args) {
-        EntityManagerFactory entityManagerFactory =
+        BookService bookService = new BookService();
+        List<BookDto> books = bookService.findBooks();
+
+        books.forEach(bookDto -> {
+            System.out.println(bookDto);
+        });
+
+
+
+
+        //System.out.println(books);
+        /* EntityManagerFactory entityManagerFactory =
                 Persistence.createEntityManagerFactory("bookstore");
 
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -30,7 +46,7 @@ public class Main {
         }
 
         entityManager.clear();
-        entityManager.close();
+        entityManager.close();*/
         //System.out.println(category);
     }
 }
