@@ -28,4 +28,5 @@ public class Address extends BasicEntity {
     private String streetNo;
     @Column(name = "home_no")
     private String homeNo;
+
 }

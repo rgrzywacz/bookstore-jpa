@@ -1,22 +1,17 @@
 package main;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
 import java.util.List;
 
-import dao.BookDao;
+import dto.AddressDto;
 import dto.BookDto;
-import entity.Author;
-import entity.AuthorBook;
-import entity.Book;
-import entity.Category;
+import service.AddressService;
 import service.BookService;
 
 public class Main {
     public static void main(String[] args) {
         BookService bookService = new BookService();
+        AddressService addressService = new AddressService();
+
         List<BookDto> books = bookService.findBooks();
 
         books.forEach(bookDto -> {
@@ -32,28 +27,23 @@ public class Main {
         bookWithPagesNumberRange.forEach(bookDto1 -> {
             System.out.println(bookDto1);
         });
+        System.out.println("**call addressService.addAddress**");
+        AddressDto addressDto = new AddressDto();
+        addressDto.setCountry("Polska");
+        addressDto.setCity("Łódź");
+        addressDto.setStreet("Dowborczyków");
+        addressDto.setZipCode("90-100");
+        addressDto.setStreetNo("23");
+        addressDto.setHomeNo("3");
+        addressDto = addressService.addAddress(addressDto);
+        System.out.println(addressDto);
 
-        //System.out.println(books);
-        /* EntityManagerFactory entityManagerFactory =
-                Persistence.createEntityManagerFactory("bookstore");
+        System.out.println("**call addressService.upadateAddress**");
+        addressDto.setStreet("Piłsudzkiego");
+        addressDto = addressService.upadateAddress(addressDto);
+        System.out.println(addressDto);
 
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        Category category = entityManager.find(Category.class, 1);
-        System.out.println(category);
-
-        Book book = entityManager.find(Book.class, 1);
-        System.out.println(book);
-
-        Author author = entityManager.find(Author.class,1);
-        System.out.println("List of "+author.getFirstName() + ' '+author.getLastName() + " books" );
-
-
-        for (AuthorBook authorBook : author.getAuthorBookList()) {
-            System.out.println(authorBook.getBook());
-        }
-
-        entityManager.clear();
-        entityManager.close();*/
-        //System.out.println(category);
+        System.out.println("**call  addressService.deleteAddressById**");
+        addressService.deleteAddressById(addressDto.getId());
     }
 }

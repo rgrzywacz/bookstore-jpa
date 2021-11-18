@@ -48,6 +48,8 @@ public class BookService {
             books.forEach(book -> {
                 BookDto bookDto = new BookDto();
                 bookDto.setTitle(book.getTitle());
+                bookDto.setCategoryName(book.getCategory().getName());
+                bookDto.setPagesNumber(book.getPagesNumber());
                 AuthorDto authorDto = new AuthorDto();
                 authorDto.setFirstName(book.getAuthorBookList().get(0).getAuthor().getFirstName());
                 authorDto.setLastName(book.getAuthorBookList().get(0).getAuthor().getLastName());
